@@ -16,6 +16,10 @@
       color: #062265;
     }
     .form {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
       .formWrapper {
         padding: 30px;
         border: 1px solid #ebebeb;
@@ -28,10 +32,29 @@
           color: #062265;
         }
 
+        .donationForm {
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+
+          .radioFieldsWrapper {
+            display: flex;
+            gap: 100px;
+
+            > .radioFields {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+            }
+          }
+        }
+
         .formFields {
           display: flex;
           gap: 25px;
           margin-bottom: 20px;
+
           > input,
           textarea {
             width: 100%;
@@ -50,18 +73,78 @@
 
           > {
             textarea {
+              font-size: 14px;
+              padding-top: 15px;
               height: auto;
+              font-family: inherit;
+            }
+          }
+        }
+
+        .paymentMethods {
+          > ul {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding-left: 0;
+            margin-bottom: 40px;
+            list-style: none;
+
+            > li {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+              height: 60px;
+              width: 100px;
+              border: 1px solid #0057a0;
+
+              > input {
+                margin-right: 0;
+              }
+
+              > label {
+                width: 100%;
+                cursor: pointer;
+
+                > img {
+                  object-fit: contain;
+                }
+              }
             }
           }
         }
       }
+
+      div {
+        margin-top: 0px;
+      }
     }
   }
+}
+
+.hideElement {
+  display: none !important;
+}
+
+.showElement {
+  display: block !important;
 }
 
 @media (max-width: 768px) {
   .formFields {
     flex-direction: column;
     padding-right: 20px;
+  }
+
+  .radioFieldsWrapper {
+    flex-direction: column;
+    gap: 25px !important;
+
+    > .radioFields {
+      display: flex !important;
+      justify-content: flex-start !important;
+      gap: 0px;
+    }
   }
 }
