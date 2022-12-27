@@ -13,7 +13,7 @@ const HeroSection = () => {
         <div className={styles.hero__left}>
           <div className={styles.title}>
             <h2>
-              Let's Be Kind and
+              Lets Be Kind and
               <br />
               <span> Donate</span>
             </h2>
