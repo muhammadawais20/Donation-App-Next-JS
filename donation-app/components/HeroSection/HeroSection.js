@@ -4,6 +4,7 @@ import Image from "../Image/Image";
 import donationImage from "../../assets/donation-image.jpg";
 
 import styles from "../../styles/HeroSection.module.scss";
+import Button from "../Button/Button";
 
 const HeroSection = () => {
   return (
@@ -21,13 +22,11 @@ const HeroSection = () => {
             <p>Step forward and donate for the noble cause,</p>
             <p>your single penny matters alot.</p>
           </div>
-          <div className={styles.donateButton}>
-            <button>
-              <Link className={styles.link} href="/donations">
-                Donate Now
-              </Link>
-            </button>
-          </div>
+          <Button>
+            <Link className={styles.link} href="/donations">
+              Donate Now
+            </Link>
+          </Button>
         </div>
         <div className={styles.hero__right}>
           <Image

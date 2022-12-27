@@ -35,27 +35,11 @@
         }
       }
 
-      .donateButton {
-        margin-top: 40px;
-        padding: 5px 0;
+      div {
         > button {
-          background-color: #08cc7f;
-          color: #fff;
-          font-size: 18px;
-          font-weight: 700;
-          padding: 13px 38px;
-          border-radius: 5px;
-          transition: all 0.3s;
-          border: none;
-          cursor: pointer;
-
-          > .link {
+          > a {
             color: #fff;
             text-decoration: none;
-          }
-
-          &:hover {
-            font-size: 20px;
           }
         }
       }
