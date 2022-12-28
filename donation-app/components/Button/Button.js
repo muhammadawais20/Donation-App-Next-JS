@@ -1,6 +1,6 @@
 import styles from "../../styles/Button.module.scss";
 
-const Button = ({ onClick, children, otherButtonClass }) => {
+const Button = ({ onClick, children, otherButtonClass, ...rest }) => {
   return (
     <div
       className={`${styles.button} ${
@@ -8,7 +8,7 @@ const Button = ({ onClick, children, otherButtonClass }) => {
       }`}
       onClick={onClick}
     >
-      <button>{children}</button>
+      <button {...rest}>{children}</button>
     </div>
   );
 };
