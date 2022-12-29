@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 import Button from "../Button/Button";
+import { checkout } from "../../checkout";
 
 import styles from "../../styles/DetailsForm.module.scss";
 
@@ -15,22 +16,11 @@ const DetailsForm = () => {
 
   const router = useRouter();
 
-  const checkoutToDonationHandler = (e) => {
-    e.preventDefault();
-    if (donationType === "One Time Donation") {
-      router.push("https://donate.stripe.com/test_fZe3d95qr8hH3vyfYY");
-    } else if (donationType === "Monthly Subscription") {
-      router.push("https://buy.stripe.com/test_14k6plaKL1Tj2ru28a");
-    } else if (donationType === "3 Months Subscription") {
-      router.push("https://buy.stripe.com/test_4gw7tp9GH2Xn7LO4gm");
-    } else if (donationType === "6 Months Subscription") {
-      router.push("https://buy.stripe.com/test_4gw3d9g55dC13vy7sz");
-    } else if (donationType === "Yearly Subscription") {
-      router.push("https://buy.stripe.com/test_bIY1517yz1Tj6HK3ck");
-    } else if (donationType === "") {
-      alert("Please select type of donation above!");
-    }
-    console.log("donationFormDetails", donationFormDetails);
+  const productIds = {
+    monthlySubscription: "price_1MKIKmI3XBmFnBMQYT6Z7E5l",
+    "3monthsSubscription": "price_1MKJFVI3XBmFnBMQ3VAYwEiz",
+    "6monthsSubscription": "price_1MKJKII3XBmFnBMQHaQCuqyS",
+    yearlySubscription: "price_1MKJM6I3XBmFnBMQdutohStQ",
   };
 
   const donationFormDetails = {
@@ -40,6 +30,27 @@ const DetailsForm = () => {
     Email: email,
     Address: address,
     Message: message,
+  };
+
+  const checkoutToDonationHandler = (e) => {
+    e.preventDefault();
+    if (donationType === "One Time Donation") {
+      console.log(donationFormDetails);
+      router.push("https://donate.stripe.com/test_fZe3d95qr8hH3vyfYY");
+    } else if (donationType) {
+      checkout({
+        lineItems: [
+          {
+            price: productIds[donationType],
+            quantity: 1,
+          },
+        ],
+      });
+
+      console.log(donationFormDetails);
+    } else if (donationType === "") {
+      alert("Please select type of donation above!");
+    }
   };
 
   return (
@@ -67,7 +78,7 @@ const DetailsForm = () => {
                       type="radio"
                       name="donationType"
                       id="subscription"
-                      value="Monthly Subscription"
+                      value="monthlySubscription"
                       onChange={(e) => setDonationType(e.target.value)}
                     />
                     <label htmlFor="monthlySubscription">
@@ -79,7 +90,7 @@ const DetailsForm = () => {
                       type="radio"
                       name="donationType"
                       id="subscription"
-                      value="3 Months Subscription"
+                      value="3monthsSubscription"
                       onChange={(e) => setDonationType(e.target.value)}
                     />
                     <label htmlFor="3monthsSubscription">
@@ -94,7 +105,7 @@ const DetailsForm = () => {
                       type="radio"
                       name="donationType"
                       id="subscription"
-                      value="6 Months Subscription"
+                      value="6monthsSubscription"
                       onChange={(e) => setDonationType(e.target.value)}
                     />
                     <label htmlFor="6monthsSubscription">
@@ -106,7 +117,7 @@ const DetailsForm = () => {
                       type="radio"
                       name="donationType"
                       id="subscription"
-                      value="Yearly Subscription"
+                      value="yearlySubscription"
                       onChange={(e) => setDonationType(e.target.value)}
                     />
                     <label htmlFor="yearlySubscription">

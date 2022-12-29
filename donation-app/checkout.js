@@ -1,5 +1,3 @@
-//This function is not in use right now.
-
 import { loadStripe } from "@stripe/stripe-js";
 
 export async function checkout({ lineItems }) {
@@ -7,7 +5,7 @@ export async function checkout({ lineItems }) {
 
   const getStripe = () => {
     if (!stripePromise) {
-      stripePromise = loadStripe(process.env.STRIPE_PUBLIC_API_KEY);
+      stripePromise = loadStripe(process.env.NEXT_PUBLIC_API_KEY);
     }
     return stripePromise;
   };
@@ -15,7 +13,7 @@ export async function checkout({ lineItems }) {
   const stripe = await getStripe();
 
   await stripe.redirectToCheckout({ 
-    mode: "payment",
+    mode: "subscription",
     submitType: "donate",
     lineItems,
     successUrl: `${window.location.origin}?session_id={CHECKOUT_SESSION_ID}`,
