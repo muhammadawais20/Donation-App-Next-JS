@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "../Image/Image";
 
-import donationImage from "../../assets/donation-image.jpg";
-
 import styles from "../../styles/HeroSection.module.scss";
 import Button from "../Button/Button";
 
@@ -30,13 +28,11 @@ const HeroSection = () => {
         </div>
         <div className={styles.hero__right}>
           <Image
-            src={donationImage}
+            src="/donation-image.jpg"
             alt="Image"
             width={500}
             height={500}
-            sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
+            objectFit="contain"
           />
         </div>
       </div>

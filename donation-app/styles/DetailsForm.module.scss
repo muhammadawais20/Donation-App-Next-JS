@@ -39,13 +39,19 @@
 
           .radioFieldsWrapper {
             display: flex;
-            gap: 100px;
+            gap: 20px;
+            flex-direction: column;
 
-            > .radioFields {
+            .radioFieldsGroup {
               display: flex;
-              align-items: center;
-              justify-content: center;
-              gap: 10px;
+              gap: 100px;
+
+              > .radioFields {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+              }
             }
           }
         }
@@ -80,40 +86,6 @@
             }
           }
         }
-
-        .paymentMethods {
-          > ul {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            padding-left: 0;
-            margin-bottom: 40px;
-            list-style: none;
-
-            > li {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              gap: 10px;
-              height: 60px;
-              width: 100px;
-              border: 1px solid #0057a0;
-
-              > input {
-                margin-right: 0;
-              }
-
-              > label {
-                width: 100%;
-                cursor: pointer;
-
-                > img {
-                  object-fit: contain;
-                }
-              }
-            }
-          }
-        }
       }
 
       div {
@@ -138,13 +110,26 @@
   }
 
   .radioFieldsWrapper {
-    flex-direction: column;
-    gap: 25px !important;
+    gap: 20px !important;
 
-    > .radioFields {
-      display: flex !important;
-      justify-content: flex-start !important;
-      gap: 0px;
+    .radioFieldsGroup {
+      flex-direction: column !important;
+      gap: 20px !important;
+
+      > .radioFields {
+        display: flex !important;
+        justify-content: flex-start !important;
+        gap: 0px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    > h2 {
+      font-size: 30px !important;
+      margin-top: -30px !important;
     }
   }
 }

@@ -1,14 +1,20 @@
 import Image from "../Image/Image";
 
-import HeroDonationImage from "../../assets/hero-donation-image.jpg";
-
 import styles from "../../styles/DonateUsHero.module.scss";
 
 const DonateUsHero = () => {
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
-        <Image src={HeroDonationImage} alt="Image" />
+        <Image
+          src="/hero-donation-image.jpg"
+          alt="Image"
+          width={500}
+          height={100}
+          sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+        />
       </div>
     </section>
   );

@@ -19,10 +19,18 @@ const DetailsForm = () => {
     e.preventDefault();
     if (donationType === "One Time Donation") {
       router.push("https://donate.stripe.com/test_fZe3d95qr8hH3vyfYY");
-      console.log("donationFormDetails", donationFormDetails);
-    } else {
-      router.push("/");
+    } else if (donationType === "Monthly Subscription") {
+      router.push("https://buy.stripe.com/test_14k6plaKL1Tj2ru28a");
+    } else if (donationType === "3 Months Subscription") {
+      router.push("https://buy.stripe.com/test_4gw7tp9GH2Xn7LO4gm");
+    } else if (donationType === "6 Months Subscription") {
+      router.push("https://buy.stripe.com/test_4gw3d9g55dC13vy7sz");
+    } else if (donationType === "Yearly Subscription") {
+      router.push("https://buy.stripe.com/test_bIY1517yz1Tj6HK3ck");
+    } else if (donationType === "") {
+      alert("Please select type of donation above!");
     }
+    console.log("donationFormDetails", donationFormDetails);
   };
 
   const donationFormDetails = {
@@ -43,27 +51,68 @@ const DetailsForm = () => {
             <h2>Your Donation</h2>
             <div className={styles.donationForm}>
               <div className={styles.radioFieldsWrapper}>
-                <div className={styles.radioFields}>
-                  <input
-                    type="radio"
-                    name="donationType"
-                    id="oneTimeDonation"
-                    value="One Time Donation"
-                    onChange={(e) => setDonationType(e.target.value)}
-                  />
-                  <label htmlFor="oneTimeDonation">One Time Donation</label>
+                <div className={styles.radioFieldsGroup}>
+                  <div className={styles.radioFields}>
+                    <input
+                      type="radio"
+                      name="donationType"
+                      id="oneTimeDonation"
+                      value="One Time Donation"
+                      onChange={(e) => setDonationType(e.target.value)}
+                    />
+                    <label htmlFor="oneTimeDonation">One Time Donation</label>
+                  </div>
+                  <div className={styles.radioFields}>
+                    <input
+                      type="radio"
+                      name="donationType"
+                      id="subscription"
+                      value="Monthly Subscription"
+                      onChange={(e) => setDonationType(e.target.value)}
+                    />
+                    <label htmlFor="monthlySubscription">
+                      Monthly Subscription
+                    </label>
+                  </div>
+                  <div className={styles.radioFields}>
+                    <input
+                      type="radio"
+                      name="donationType"
+                      id="subscription"
+                      value="3 Months Subscription"
+                      onChange={(e) => setDonationType(e.target.value)}
+                    />
+                    <label htmlFor="3monthsSubscription">
+                      3 Months Subscription
+                    </label>
+                  </div>
                 </div>
-                <div className={styles.radioFields}>
-                  <input
-                    type="radio"
-                    name="donationType"
-                    id="subscription"
-                    value="Monthly Subscription"
-                    onChange={(e) => setDonationType(e.target.value)}
-                  />
-                  <label htmlFor="monthlySubscription">
-                    Monthly Subscription
-                  </label>
+
+                <div className={styles.radioFieldsGroup}>
+                  <div className={styles.radioFields}>
+                    <input
+                      type="radio"
+                      name="donationType"
+                      id="subscription"
+                      value="6 Months Subscription"
+                      onChange={(e) => setDonationType(e.target.value)}
+                    />
+                    <label htmlFor="6monthsSubscription">
+                      6 Months Subscription
+                    </label>
+                  </div>
+                  <div className={styles.radioFields}>
+                    <input
+                      type="radio"
+                      name="donationType"
+                      id="subscription"
+                      value="Yearly Subscription"
+                      onChange={(e) => setDonationType(e.target.value)}
+                    />
+                    <label htmlFor="yearlySubscription">
+                      Yearly Subscription
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
